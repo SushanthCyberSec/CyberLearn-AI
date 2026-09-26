@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberLearn AI</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #07111f;
+      color: #ffffff;
+      min-height: 100vh;
+    }
+
+    header {
+      padding: 20px;
+      background: #0b1728;
+      border-bottom: 1px solid #18304a;
+      text-align: center;
+    }
+
+    header h1 {
+      color: #36d9ff;
+      font-size: 28px;
+    }
+
+    header p {
+      color: #9db0c5;
+      margin-top: 6px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 25px 18px;
+    }
+
+    .hero {
+      padding: 30px 20px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #102b45, #071522);
+      border: 1px solid #1c5274;
+      margin-bottom: 22px;
+    }
+
+    .hero h2 {
+      font-size: 30px;
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+
+    .hero span {
+      color: #36d9ff;
+    }
+
+    .hero p {
+      color: #b5c6d8;
+      line-height: 1.6;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 15px;
+    }
+
+    .card {
+      background: #0d1b2d;
+      border: 1px solid #193852;
+      border-radius: 16px;
+      padding: 20px;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      color: #36d9ff;
+    }
+
+    .card p {
+      color: #aabbd0;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 11px 17px;
+      border: none;
+      border-radius: 10px;
+      background: #18bfe8;
+      color: #001018;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .tutor {
+      margin-top: 22px;
+      background: #0d1b2d;
+      border: 1px solid #193852;
+      border-radius: 16px;
+      padding: 20px;
+    }
+
+    input {
+      width: 100%;
+      margin-top: 15px;
+      padding: 13px;
+      border-radius: 10px;
+      border: 1px solid #31516c;
+      background: #07111f;
+      color: white;
+      outline: none;
+    }
+
+    #response {
+      margin-top: 15px;
+      color: #9eeaff;
+      line-height: 1.6;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #70869d;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>🔐 CyberLearn AI</h1>
+  <p>AI-powered cybersecurity learning assistant</p>
+</header>
+
+<div class="container">
+
+  <section class="hero">
+    <h2>Learn Cybersecurity with <span>AI</span></h2>
+    <p>
+      Learn cybersecurity concepts through simple explanations,
+      quizzes, learning paths and safe real-world scenarios.
+    </p>
+  </section>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>🤖 AI Tutor</h3>
+      <p>
+        Ask cybersecurity questions and learn difficult concepts
+        in beginner-friendly language.
+      </p>
+      <button onclick="showTutor()">Ask AI Tutor</button>
+    </div>
+
+    <div class="card">
+      <h3>🧠 Quiz Generator</h3>
+      <p>
+        Test your cybersecurity knowledge with interactive questions.
+      </p>
+      <button onclick="startQuiz()">Start Quiz</button>
+    </div>
+
+    <div class="card">
+      <h3>📚 Learning Path</h3>
+      <p>
+        Follow a structured path from cybersecurity basics
+        to advanced concepts.
+      </p>
+      <button onclick="showPath()">View Path</button>
+    </div>
+
+    <div class="card">
+      <h3>🛡️ Safe Scenarios</h3>
+      <p>
+        Practice identifying common security risks through
+        educational scenarios.
+      </p>
+      <button onclick="showScenario()">Explore</button>
+    </div>
+
+  </div>
+
+  <section class="tutor">
+    <h3>💬 CyberLearn Assistant</h3>
+
+    <input
+      id="question"
+      placeholder="Ask: What is phishing?"
+    >
+
+    <button onclick="askAssistant()">Ask Question</button>
+
+    <div id="response"></div>
+  </section>
+
+</div>
+
+<footer>
+  Built for learning • CyberLearn AI
+</footer>
+
+<script>
+
+function askAssistant() {
+  const q = document.getElementById("question").value;
+  const response = document.getElementById("response");
+
+  if (!q) {
+    response.innerHTML = "Please enter a question.";
+    return;
+  }
+
+  response.innerHTML =
+    "📚 Learning mode: Your question is ready for the AI tutor. " +
+    "Connect the AI backend to receive a personalized explanation.";
+}
+
+function showTutor() {
+  document.getElementById("question").focus();
+}
+
+function startQuiz() {
+  alert("🧠 Quiz module coming next!");
+}
+
+function showPath() {
+  alert(
+    "📚 Learning Path:\\n\\n" +
+    "1. Cybersecurity Basics\\n" +
+    "2. Networking Fundamentals\\n" +
+    "3. Web Security\\n" +
+    "4. Security Awareness"
+  );
+}
+
+function showScenario() {
+  alert(
+    "🛡️ Scenario: You receive a suspicious email asking " +
+    "you to urgently click a link. What should you do?"
+  );
+}
+
+</script>
+
+</body>
+</html>
