@@ -205,7 +205,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/fireba
 import {
   getAuth, setPersistence, browserLocalPersistence,
   createUserWithEmailAndPassword, signInWithEmailAndPassword,
-  GoogleAuthProvider, signInWithRedirect, onAuthStateChanged, signOut,
+  GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut,
   updateProfile
 } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
 
@@ -313,9 +313,15 @@ if (!configReady) {
 
     document.getElementById("googleSignIn").addEventListener("click", async () => {
       try {
-        await signInWithRedirect(auth, new GoogleAuthProvider());
+        await signInWithPopup(auth, new GoogleAuthProvider());
       } catch (error) {
-        say("Google sign-in could not start. Check provider and authorized domain settings.");
+        const googleMessages = {
+          "auth/popup-blocked": "Your browser blocked the Google sign-in popup. Allow popups and try again.",
+          "auth/popup-closed-by-user": "Google sign-in was closed before it finished. Try again.",
+          "auth/unauthorized-domain": "This website domain is not authorized in Firebase.",
+          "auth/operation-not-allowed": "Google sign-in is not enabled in Firebase."
+        };
+        say(googleMessages[error.code] || `Google sign-in failed (${error.code || "unknown error"}).`, true);
       }
     });
     document.getElementById("logoutBtn").addEventListener("click", async () => {
@@ -329,4 +335,4 @@ if (!configReady) {
 </script>
 
 </body>
-        </html>
+</html>
